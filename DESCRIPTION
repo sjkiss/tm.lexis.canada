@@ -1,7 +1,7 @@
 Package: tm.lexis.canada
 Type: Package
 Title: Reads in files of news articles downloaded from Lexis-Nexis
-Version: 1.0
+Version: 3.2.0
 Date: 2015-11-13
 Author: Simon J. Kiss, Wilfrid Laurier University
 Maintainer: Simon J. Kiss <skiss@wlu.ca>
