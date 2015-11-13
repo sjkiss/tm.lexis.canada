@@ -1,0 +1,10 @@
+Package: tm.lexis.canada
+Type: Package
+Title: Reads in files of news articles downloaded from Lexis-Nexis
+Version: 1.0
+Date: 2015-11-13
+Author: Simon J. Kiss, Wilfrid Laurier University
+Maintainer: Simon J. Kiss <skiss@wlu.ca>
+Description: Databases of news articles often contain useful metadata which is formatted in different ways. The tm package in R is highly extendible in that it lends itself to producing plugin packages that read textual material in which is formatted in different ways.  This package reads in news articles from the Lexis-Nexis database for analysis in the tm package.  Note that there is additional useful metadata in the Lexis-Nexis documents (i.e. article titles), but it is not immediately clear that it is extractable in an automated way because there is no consistent tagging.
+License: GPL-2
+Imports: tm
