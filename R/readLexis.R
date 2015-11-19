@@ -15,7 +15,7 @@ readLexis<-tm::FunctionGenerator(
         gsub(" Monday| Tuesday| Wednesday| Thursday| Friday| Saturday| Sunday", "", #open gsub
              elem$content[grep("DOCUMENTS$", elem$content)+2 ]),#close gsub 
         format='%B %d, %Y') #close as.Date
-      origin<-elem$content[grep('DOCUMENTS?', elem$content)+1]
+      origin<-elem$content[grep('DOCUMENTS$', elem$content)+1]
       ####Note: Just because ProQuest decides to be a little tricky with their encoding of "Full Text", you have to account for both capital T and small t. Thanks ProQuest! 
       content<- elem$content[(grep("^LENGTH:", elem$content)+1):(grep("^LOAD-DATE:", elem$content)-2)]
       #out2[grep("^LENGTH:", out2)+2:grep("^LOAD-DATE:", out2)-1]
