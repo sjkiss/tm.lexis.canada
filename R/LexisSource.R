@@ -5,8 +5,8 @@ LexisSource<-function(x, encoding = "UTF-8") {
   content<-readLines(x, warn=FALSE)
   ###The following are lines of usually superfluous information that are placed between the what is used to demarcate the beginning of the full text (^LENGTH) and the end of the full text (^LOAD-DATE:)
   content<-   content[grep('^DATELINE:', content, invert=TRUE)]
-  #strip out empty white lines
-  content<-content[grep('.', content)]
+  #strip out empty white lines and trim leading and trailing whitespace from the content. Trimming enables grepping dates in the function readLexis
+  content<-trimws(content[grep('.', content)])
   num <- cumsum(grepl("\f", content))
   content<-split(content, num)
   
@@ -16,3 +16,4 @@ LexisSource<-function(x, encoding = "UTF-8") {
   
   s
 }
+

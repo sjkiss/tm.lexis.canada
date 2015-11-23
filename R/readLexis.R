@@ -11,10 +11,11 @@ readLexis<-tm::FunctionGenerator(
       # with information you extracted from elem$conten
       author<-gsub('BYLINE: ', '', grep('^BYLINE:', elem$content, value=TRUE))
       section<-gsub('SECTION: ', '', grep('^SECTION: ', elem$content, value=TRUE))
-      datetimestamp<-as.Date(#open as.Date
-        gsub(" Monday| Tuesday| Wednesday| Thursday| Friday| Saturday| Sunday", "", #open gsub
-             elem$content[grep("DOCUMENTS$", elem$content)+2 ]),#close gsub 
-        format='%B %d, %Y') #close as.Date
+      #This method of grepping dates appears to be more versatile for Lexis-nexis output.
+      datetimestamp<-as.Date(
+        elem$content[grep(', [0-9]{4} Monday$|, [0-9]{4} Tuesday$|, [0-9]{4} Wednesday$|, [0-9]{4} Thursday$|, [0-9]{4} Friday$|, [0-9]{4} Saturday$|, [0-9]{4} Sunday$', elem$content)]
+      , format='%B %d, %Y %A')
+      
       origin<-elem$content[grep('DOCUMENTS$', elem$content)+1]
       ####Note: Just because ProQuest decides to be a little tricky with their encoding of "Full Text", you have to account for both capital T and small t. Thanks ProQuest! 
       content<- elem$content[(grep("^LENGTH:", elem$content)+1):(grep("^LOAD-DATE:", elem$content)-2)]
